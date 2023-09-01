@@ -1,0 +1,96 @@
+<div class="card text-dark" style="background-color: #a1b3e2;">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body" style="background-color:#e9edfb;">
+        <div class="my-2 text-left">
+            <button class="btn btn-outline-primary" type="button" [routerLink]="['/empleados']"><i class="fa-solid fa-circle-chevron-left"></i></button>
+          </div>
+        <form #empleadoForm ="ngForm">
+            <div class="form-group row ">
+                <label for="cedula" class="col-form-label col-sm-2">cedula</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" class="form-control" [(ngModel)]="empleado.cedula" required minlength="10" name="cedula"  
+                    #cedula="ngModel" pattern="[0-9]+">
+                        <p style="color:red" *ngIf="cedula.errors?.['required']"> * La cédula es requerida</p>
+                        <p style="color:red" *ngIf="cedula.errors?.['pattern']">* Solo se permiten ingresar números</p>
+                        <p style="color:red" *ngIf="cedula.errors?.['minlength']">* La cédula debe contener al menos 10 dígitos</p>          
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="nombre" class="col-form-label col-sm-2">nombres</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" class="form-control"[(ngModel)]="empleado.nombres" required  name="nombre" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$" #nombre="ngModel">
+                        <p style="color:red" *ngIf="nombre.errors?.['required']" role="alert">* El nombre es requerido</p>
+                        <p style="color:red" *ngIf="nombre.errors?.['pattern']"> * El nombre no debe contener caracteres especiales </p>
+                </div>
+            </div>
+            <div class="form-group row row ">
+                <label for="apellido" class="col-form-label col-sm-2">apellidos</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" class="form-control" [(ngModel)]="empleado.apellidos" name="apellido" pattern="^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$" required #apellido ="ngModel">
+                        <p style="color:red" *ngIf="apellido.errors?.['required']">* El apellido es requerido</p>
+                        <p style="color:red" *ngIf="apellido.errors?.['pattern']"> * El apellido no debe contener caracteres especiales </p>
+                </div>
+            </div>
+            <div class="form-group row row ">
+                <label for="email" class="col-form-label col-sm-2">email</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" class="form-control" [(ngModel)]="empleado.email" name="email" required email #email="ngModel">
+                        <p style="color:red" *ngIf="email.errors?.['required']"> El email es requerido</p>
+                        <p style="color:red" *ngIf="email.errors?.['email']"> El email debe tener un formato válido</p>
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="nombre" class="col-form-label col-sm-2">fecha de nacimiento</label>
+                <div class="col-sm-6 my-2">
+                    <input type="date" date="yyyy-MM-dd" name="fechaNacimiento" class="form-control" [(ngModel)]="empleado.fechaNacimiento">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="nombre" class="col-form-label col-sm-2">dirección</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" name="direccion" class="form-control" [(ngModel)]="empleado.direccion">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="nombre" class="col-form-label col-sm-2">teléfono móvil</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" name="telefono" maxlength="10" class="form-control" [(ngModel)]="empleado.telefono">
+                </div>
+            </div>
+            <div class="form-group row ">
+                <label for="nombre" class="col-form-label col-sm-2">estado de vacunación</label>
+                <div class="col-sm-6 my-2">
+                    <input type="text" name="estado"  class="form-control" [(ngModel)]="empleado.estado">
+                </div>
+            </div>
+            <div class="forn-group row">
+                <label class="col-form-label col-sm-2">Tipo de vacuna:</label>
+                <div class="col-sm-2 my-2">
+                    <select class="form-select" name="tipoVacuna" [(ngModel)]="empleado.tipoVacuna">
+                        <option value="Pfizer">Pfizer</option>
+                        <option value="Moderna">Moderna</option>
+                        <option value="AstrZeneca">AstrZeneca</option>
+                    </select>
+                </div>
+                <label class="col-form-label col-sm-2">fecha de vacunación</label>
+                <div class="col-sm-2 my-2">
+                    <input type="date" date="yyyy-MM-dd" name="fechaVacuna" class="form-control" [(ngModel)]="empleado.fechaVacuna">
+                </div>
+                <label class="col-form-label col-sm-2">número de dosis</label>
+                <div class="col-sm-2 my-2">
+                    <input type="number" date="yyyy-MM-dd" name="numeroDosis" class="form-control" [(ngModel)]="empleado.numeroDosis">
+                </div>
+            </div>
+            <div class="form-group row row ">
+                <div class="col-sm-6 my-2">
+                        <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!empleadoForm.form.valid">
+                            <i class="fa-regular fa-floppy-disk"></i> editar
+                        </button>    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

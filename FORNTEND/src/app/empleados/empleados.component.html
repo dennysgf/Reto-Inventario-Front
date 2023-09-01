@@ -1,0 +1,45 @@
+  <div class="container py-5">
+
+    <div *ngIf="empleados?.length == 0" class="alert alert-info">
+      No existen registros en la base de datos
+    </div>
+    <table id="example" class="table  table-hover">
+      <caption class="caption-top">
+        Lista de empleados
+      </caption>
+      <thead>
+        <tr>
+          <th>N° Cédula</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of personasPaginadas">
+          <td>{{empleado.cedula}}</td>
+          <td>{{empleado.nombres}}</td>
+          <td>{{empleado.apellidos}}</td>
+          <td>{{empleado.email}}</td>
+          <td>
+            <a style="margin-right: 15px;" type="button" name="button" [routerLink]="['/empleados/edit/',empleado.id]"
+              class="btn btn-primary btn-sm">
+              <i class="fa-sharp fa-solid fa-pen-to-square"></i> editar
+            </a>
+            <a type="button" name="button" (click)="delete(empleado)" class="btn btn-danger btn-sm">
+              <i class="fa-sharp fa-solid fa-trash"></i> eliminar
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" [disabled]="paginaActual == 1"
+        (click)="paginaActual = paginaActual - 1">Anterior</button>
+      <span> {{ paginaActual }} / {{ cantidadPaginas }} </span>
+      <button class="btn btn-outline-primary" data-mdb-ripple-color="dark" [disabled]="paginaActual == cantidadPaginas"
+        (click)="paginaActual = paginaActual + 1">Siguiente</button>
+    </div>
+
+  </div>

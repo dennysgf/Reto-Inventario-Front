@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-secondary" style="background-color: #485c85">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><i class="fa-brands fa-angular fa-beat fa-lg" style="color: #ca361c;"></i>
+            {{title}} <i class="fa-brands fa-java fa-beat fa-lg" style="color: #cc3d00;"></i></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/empleados/form"><i class="fa-solid fa-user-plus fa-beat-fade"></i>
+                        agregar empleado</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link" routerLink="/empleados"><i class="fa-solid fa-users"></i> Listado</a>
+                </li>
+            </ul>
+            <ul>
+                <div class="dropdown">
+                    <a  class="dropdown-toggle text-white d-flex align-items-center hidden-arrow" href="#"
+                        id="navbarDropdownMenuAvatar" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i> usuario
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="#">Mi perfil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Ajustes</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#"><i class="fa-solid fa-right-to-bracket"></i> Cerrar sesión</a>
+                        </li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+</nav>
