@@ -23,7 +23,7 @@ public class EmpleadoController {
         List<Empleado> list = empleadoService.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-//FILTROS
+    //Filtrar por detalle del empleado
     @GetMapping("/detail/{id}")
     public ResponseEntity<Empleado> getById(@PathVariable("id") int id){
         if(!empleadoService.existsById(id))
@@ -31,7 +31,18 @@ public class EmpleadoController {
         Empleado empleado = empleadoService.getOne(id).get();
         return new ResponseEntity(empleado, HttpStatus.OK);
     }
-
+    //Filtrar empleados por tipo de vacuna
+    @GetMapping("/tipoVacuna/{tipoVacuna}")
+    public ResponseEntity<List<Empleado>>filtrarPortipoVacuna(@PathVariable("tipoVacuna")String tipoVacuna){
+        List<Empleado>empleadosFiltrados = empleadoService.filtrarPorTipoVacuna(tipoVacuna);
+        return new ResponseEntity<>(empleadosFiltrados,HttpStatus.OK);
+    }
+    //Filtrar empleados por estado de vacunación
+    @GetMapping("/estadoVacuna/{estado}")
+    public ResponseEntity<List<Empleado>>filtrarPorEstadoVacuna(@PathVariable("estado")String estado){
+            List<Empleado> filtroEmpleado= empleadoService.filtarPorEstadoVacun(estado);
+            return  new ResponseEntity<>(filtroEmpleado,HttpStatus.OK);
+    }
 
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/create")

@@ -33,6 +33,10 @@ public class EmpleadoService {
         return empleadoRepository.existsById(id);
     }
 
-
-
+    public List<Empleado>filtrarPorTipoVacuna(String tipoVacuna){
+        return empleadoRepository.findByTipoVacuna(tipoVacuna);
+    }
+    public List<Empleado>filtarPorEstadoVacun(String estado){
+        return empleadoRepository.findByEstado(estado);
+    }
 }
