@@ -37,3 +37,17 @@ Para el desarrollo de mi aplicación eh usado tecnologías como: Springboot del 
 
 ## security
 - Dentro de la implementación de JWT luego de la creación de un usuario con su Rol, tomar en cuenta el token generado para hacer uso del mismo para bearer token
+## creación de un usuario para login
+- {
+    "nombre":"admin",
+    "nombreUsuario": "admin",
+    "email":"correo@correo.com",
+    "password":"admin",
+    "roles":["admin"]
+}
+- En caso de no especificar el rol, este tomará en cuenta como el registro de un usuario normal
+## datos para el login
+- {
+    "nombreUsuario": "admin",
+    "password":"admin"
+## 
